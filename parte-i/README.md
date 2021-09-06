@@ -2,7 +2,9 @@
 
 ## 1. Setup del entorno
 
-Antes que nada te recomendamos descargar el Visual Studio Code e instalarle la extensión Live Server para hacer las pruebas con una página web local o preparar un entorno similar. Puedes crear una carpeta nueva carpeta `oac` y crear un nuevo archivo llamado `index.html`.
+Antes que nada te recomendamos descargar el Visual Studio Code e instalarle la extensión Live Server para hacer las pruebas con una página web local o preparar un entorno similar. Puedes crear una carpeta nueva carpeta `parte-i` y crear allí un nuevo archivo llamado `index.html`.
+
+![img](media/setup.png))
 
 Seguidamente necesitaremos crear una el código de neustra web en donde embeber nuestros dashboards de OAC, en este punto puedes usar tu propia página web o usar el siguiente código html para hacer pruebas:
 
@@ -34,11 +36,11 @@ Debes escoger el proyecto en OAC con el que quieras trabajar, es importante que 
 
 Luego en tu proyecto de analytics debes hacer click en el menu de los tres puntos que está ubicado a la derecha y seleccionar el modo desarrollador.
 
-![img](/media/embeber-1.png)
+![img](media/embeber-1.png)
 
 Seguidamente desde el menu de desarrollador, escoge la pestaña `embeber` y allí copia el `script` y el `tag`.
 
-![img](/media/embeber-2.png)
+![img](media/embeber-2.png)
 
 Este paso es **¡importante!** en la descripción del `script` notamos que se indica cambiar `<embeddingMode>` por `jet` o `standalone`, entonces, como en nuestra página solo se usará para el dashboard, usaremos la segunda opción:
 
@@ -105,10 +107,10 @@ Volvemos a nuestro código y agregamos el script de nuestra función y es muy im
 
 ## 3. Setup de OAC
 
-Finalmente, debemos tomar nota de la url nuestro servidor que en este caso es `127.0.0:5500` y [agregarla como un dominio seguro](https://docs.oracle.com/en/cloud/paas/analytics-cloud/acabi/register-safe-domains.html) desde la consola de administración de OAC.
+Debemos tomar nota de la url nuestro servidor que es el Live Server y en este caso es `127.0.0.1:5500` y [agregarla como un dominio seguro](https://docs.oracle.com/en/cloud/paas/analytics-cloud/acabi/register-safe-domains.html) desde la consola de administración de OAC.
 
 ![img](media/embeber-3.png)
 
-En este momento ya debemos poder acceder a los dashboards desde nuestra página web.
+Finalmente, ya debemos poder acceder a los dashboards desde nuestra página web.
 
 ![img](media/embeber-4.png)
