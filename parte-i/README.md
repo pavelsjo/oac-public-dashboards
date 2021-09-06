@@ -1,6 +1,6 @@
-# Parte 1 - Dashboards privados
+# Parte I - Dashboards privados
 
-## a. Setup del entorno
+## 1. Setup del entorno
 
 Antes que nada te recomendamos descargar el Visual Studio Code e instalarle la extensión Live Server para hacer las pruebas con una página web local o preparar un entorno similar. Puedes crear una carpeta nueva carpeta `oac` y crear un nuevo archivo llamado `index.html`.
 
@@ -28,7 +28,7 @@ En esta momento ya podrás dar click derecho al `index.html` y abrilo con el Liv
 
 ![img](media/embeber-0.png)
 
-## b. Setup de OAC
+## 2. Setup de la Página web
 
 Debes escoger el proyecto en OAC con el que quieras trabajar, es importante que si tienes quieres que sea compartido, este proyecto debe estar en las `Carpetas Compartidas` en `OAC`.
 
@@ -102,6 +102,8 @@ Volvemos a nuestro código y agregamos el script de nuestra función y es muy im
     </script>
 </html>
 ```
+
+## 3. Setup de OAC
 
 Finalmente, debemos tomar nota de la url nuestro servidor que en este caso es `127.0.0:5500` y [agregarla como un dominio seguro](https://docs.oracle.com/en/cloud/paas/analytics-cloud/acabi/register-safe-domains.html) desde la consola de administración de OAC.
 
