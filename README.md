@@ -9,7 +9,7 @@ Iniciaremos con un setup básico de OAC para embeber nuestros dashboards en nues
 Esta parte la dividiremos en 3 bloques:
 
 1. Setup del entorno
-2. Setup de la Página web
+2. Embeber OAC
 3. Setup de OAC
 
 ![img](arquitectura-private.png)
