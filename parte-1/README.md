@@ -1,6 +1,6 @@
-## Parte 1 - Dashboards privados
+# Parte 1 - Dashboards privados
 
-### a. Setup del entorno
+## a. Setup del entorno
 
 Antes que nada te recomendamos descargar el Visual Studio Code e instalarle la extensión Live Server para hacer las pruebas con una página web local o preparar un entorno similar. Puedes crear una carpeta nueva carpeta `oac` y crear un nuevo archivo llamado `index.html`.
 
@@ -28,7 +28,7 @@ En esta momento ya podrás dar click derecho al `index.html` y abrilo con el Liv
 
 ![img](media/embeber-0.png)
 
-### b. Setup de OAC
+## b. Setup de OAC
 
 Debes escoger el proyecto en OAC con el que quieras trabajar, es importante que si tienes quieres que sea compartido, este proyecto debe estar en las `Carpetas Compartidas` en `OAC`.
 
@@ -110,5 +110,3 @@ Finalmente, debemos tomar nota de la url nuestro servidor que en este caso es `1
 En este momento ya debemos poder acceder a los dashboards desde nuestra página web.
 
 ![img](media/embeber-4.png)
-
-## Parte 2 - Dashboards Públicos
