@@ -2,13 +2,13 @@
 
 ## 1. Setup del entorno
 
-Antes que nada te recomendamos descargar el [Visual Studio Code](https://code.visualstudio.com/) e instalarle la extensión [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) para hacer las pruebas con una página web local o debes preparar un entorno similar.
+Antes que nada te recomendamos descargar el [Visual Studio Code](https://code.visualstudio.com/) e instalarle la extensión [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) para hacer las pruebas con una página web local o sino entonces debes preparar un entorno similar.
 
 Puedes crear una carpeta nueva carpeta `parte-i` y crear allí un nuevo archivo llamado `index.html`.
 
 ![img](media/setup.png))
 
-Seguidamente necesitaremos crear una el código de neustra web en donde embeber nuestros dashboards de OAC, en este punto puedes usar tu propio código o usar el siguiente ejemplo para hacer pruebas:
+Seguidamente necesitaremos crear una el código de neustra web en donde embeber nuestros dashboards de OAC, para ello, puedes usar tu propio código o usar el siguiente ejemplo para hacer pruebas:
 
 ```html
 <!DOCTYPE html>
@@ -26,9 +26,9 @@ Seguidamente necesitaremos crear una el código de neustra web en donde embeber 
 </html>
 ```
 
-La estructura es simple y en ella agregaremos los `tags` y `scripts` necesarios para embeber nuestros dashboars.
+Verás que la estructura es simple y en ella iremos agregando los `tags` y `scripts` necesarios para embeber nuestros dashboars.
 
-En esta momento ya podrás dar click derecho al `index.html` y abrilo con el Live Server.
+En esta momento puedes hacer una prueba para ver la página web, puedes dar click derecho al `index.html` y abrilo con el Live Server.
 
 ![img](media/live-server.png)
 
@@ -38,7 +38,7 @@ Seguidamente se te abrirá una nueva pestaña en tu navegador en donde únicamen
 
 ## 2. Embeber OAC
 
-Ahora desde el `OAC`, debes escoger el proyecto con el que quieras trabajar, y es importante notar que si quieres que el proyecto sea visto por diferentes usuarios, este debe estar en las `Carpetas Compartidas` en `OAC`.
+Ahora desde el `OAC`, debes escoger el proyecto con el que quieras trabajar, y es muy importante notar que si quieres que el proyecto sea visto por diferentes usuarios, entonces, este debe estar en las `Carpetas Compartidas` en `OAC`.
 
 Luego, dentro de tu proyecto de analytics debes hacer click en el menu de los tres puntos que está ubicado a la derecha y seleccionar el modo desarrollador.
 
@@ -48,7 +48,7 @@ Seguidamente desde el menu de desarrollador, escoge la pestaña `embeber` y all�
 
 ![img](media/embeber-2.png)
 
-Este paso es **¡importante!** notar que en la descripción del `script` se se indica cambiar `<embeddingMode>` por `jet` o `standalone`, entonces, como en nuestra página solo se usará para el dashboard, usaremos la segunda opción y lo editaremos:
+En este paso es **¡importante!** notar que en la descripción del `script` se indica cambiar `<embeddingMode>` por `jet` o `standalone` y como en nuestra página solo se usará para el dashboard, usaremos la segunda opción y lo editaremos:
 
 ```html
 <script src="https://oac-grgqvoahscvk-gr.analytics.ocp.oraclecloud.com/public/dv/v1/embedding/standalone/embedding.js" type="application/javascript">
@@ -86,7 +86,7 @@ Con ese script que embebimos podemos invocar a la función `requirejs` que recib
 </script>
 ```
 
-Nuevamente en nuestro código agregamos ste script que llama a `requirejs` y es muy importante que esta se ejecute luego de que el `<oracle-dv></oracle-dv>` se haya cargado completamente por lo que lo agregaremos al final de nuestro html.
+Nuevamente en nuestro código agregamos este script que invoca a `requirejs`, es muy importante que esta se ejecute luego de que el `<oracle-dv></oracle-dv>` se haya cargado completamente por lo que lo agregaremos al final de nuestro html.
 
 ```html
 <!DOCTYPE html>
@@ -110,14 +110,14 @@ Nuevamente en nuestro código agregamos ste script que llama a `requirejs` y es 
 </html>
 ```
 
-## 3. Setup de OAC
+## 3. Dominios seguros en OAC
 
-Vamos a nuestro navegador donde esta abierta nuestra página y vemos que aún no se ven los dashboards, la razón es que debemos configurar los dominios seguros en OAC.
+Si vemos en nuestro navegador donde esta abierta nuestra página y notamos que aún no se ven los dashboards, y la razón es que debemos configurar los dominios seguros en OAC.
 
-Para hacerlo debemos tomar nota de la url nuestro servidor que es el `Live Server` y que en nuestro caso es `127.0.0.1:5500` y [agregarla como un dominio seguro](https://docs.oracle.com/en/cloud/paas/analytics-cloud/acabi/register-safe-domains.html) desde la consola de administración de OAC tildando los checks de `Conectar` y `Embebido`.
+Para hacerlo debemos tomar nota de la url que nos da nuestro servidor que en neustro caso es el `Live Server` y es `127.0.0.1:5500` y debemos [agregarla como un dominio seguro](https://docs.oracle.com/en/cloud/paas/analytics-cloud/acabi/register-safe-domains.html) desde la consola de administración de OAC tildando los checks de `Conectar` y `Embebido`.
 
 ![img](media/embeber-3.png)
 
-Finalmente, podemos refrescar nuestro navegador y debemos poder acceder a los dashboards desde nuestra página web.
+Finalmente, refrescamos nuestro navegador, nos saldra una ventana que nos pedirá autenticarno y luego debemos ver los dashboards embebidos en nuestra página web.
 
 ![img](media/embeber-4.png)

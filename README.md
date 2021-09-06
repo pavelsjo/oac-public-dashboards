@@ -10,7 +10,7 @@ Esta parte la dividiremos en 3 bloques:
 
 1. Setup del entorno
 2. Embeber OAC
-3. Setup de OAC
+3. Dominios seguros en OAC
 
 ![img](arquitectura-private.png)
 
