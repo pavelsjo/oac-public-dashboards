@@ -77,9 +77,56 @@ Finalmente te aparecerá una ventana con el `Client ID` y el `Client Secret`.
 
 ![img](media/app-10.png)
 
-Estos dos valores son datos que no debes exponer públicamente y debes copiarlos y guardarlos en un lugar seguro antes de cerrar la ventana.
+Estos dos valores son datos que no debes exponer públicamente y debes copiarlos y guardarlos en un lugar seguro antes de cerrar la ventana porque vamos a utilizarlos.
+
+Finalmente en la pestaña donde aparece tu aplicación debes activarla.
+
+![img](media/app-11.png)
 
 ## 3. Codificar la credencial de nuestra app con Base 64
+
+Ya que tenemos la aplicación que nos permitirá crear un token, podemos probarla con el siguiente código:
+
+```s
+curl --request POST \
+ --url https://<IDCS-domain>.identity.oraclecloud.com/oauth2/v1/token \
+ --header 'authorization: Basic <base64 encoded clientID:ClientSecret>' \
+ --header 'content-type: application/x-www-form-urlencoded;charset=UTF-8' \
+-d 'grant_type=password&username=<username>&password=<password>&scope=<scope>'
+```
+
+Entonces, para que ese código funcione debes editar los siguientes parámetros:
+
+- **\<IDCS-domain>**: puedes ubicarlo en el link que te lleva al panel de administrador de OIDCS, es la misma ventana donde creaste tu usuario federado.
+- **clientID** y **ClientSecret** aparecen al final de la creación de la app. En caso de que no los hayas copiado puedes hacer doble click en la app luego en `configuracion` y `General information` los veras nuevamente, en el caso del **ClientSecret** deberas crear uno nuevo si lo olvidaste.
+- **\<username>** y **\<password>**: del usuario con pocos privilegios que creamos en al principio.
+- **\<scope>**: En caso de que no los hayas copiado puedes hacer doble click en la app luego en `configuracion` y `Client Configuration` los veras nuevamente.
+
+Puede que notaste que el **clientID** y **ClientSecret** deben estar en codificados en base 64 y para hacerlo puedes usar la consola de OCI:
+
+![img](media/token-1.png)
+
+Y escribir el siguiente comando `echo -n "clientID:ClientSecret" | base64`:
+
+```shell
+echo -n "3be6b04893dd4393bbed9c72ef7f8895:e9d5f2f3-94c1-4c06-a148-9f9aef5ed30a" | base64
+```
+
+Finalmente tu código debe lucir así:
+
+```shell
+curl --request POST \ 
+--url https://idcs-28f7aa1618d04f7ab72e708aaf975a7b.identity.oraclecloud.com/oauth2/v1/token \ 
+--header 'authorization: Basic M2JlNmIwNDg5M2RkNDM5M2JiZWQ5YzcyZWY3Zjg4OTU6ZTlkNWYyZjMtOTRjMS00YzA2LWExNDgtOWY5YWVmNWVkMzBh' \
+--header 'content-type: application/x-www-form-urlencoded;charset=UTF-8' \ 
+-d 'grant_type=password&username=oac&password=PASSWORD&scope=https://w32jtlztl3wgffrgahfcx26gqa27dgua.analytics.ocp.oraclecloud.comurn:opc:resource:consumer::all'
+```
+
+Al presionar debes ver en la consola un token que expira en 10s:
+
+```shell
+{"access_token":"eyJ4NXQjUzI1NiI6ImNmRTg0NUdHeVZZOHMzbTNGZEY1Q3ozNXg0cTFhbDNnbi1TN2psZ05oWTgiLCJ4NXQiOiJFSW43eEFEaTcySGpfQVhCa0FrMldTeXlrSTgiLCJraWQiOiJTSUdOSU5HX0tFWSIsImFsZyI6IlJTMjU2In0.eyJ1c2VyX3R6IjoiQW1lcmljYVwvQ2hpY2FnbyIsInN1YiI6Im9hYyIsInVzZXJfbG9jYWxlIjoiZW4iLCJ1c2VyLnRlbmFudC5uYW1lIjoiaWRjcy0yOGY3YWExNjE4ZDA0ZjdhYjcyZTcwOGFhZjk3NWE3YiIsImlzcyI6Imh0dHBzOlwvXC9pZGVudGl0eS5vcmFjbGVjbG91ZC5jb21cLyIsInVzZXJfdGVuYW50bmFtZSI6ImlkY3MtMjhmN2FhMTYxOGQwNGY3YWI3MmU3MDhhYWY5NzVhN2IiLCJjbGllbnRfaWQiOiIzYmU2YjA0ODkzZGQ0MzkzYmJlZDljNzJlZjdmODg5NSIsInN1Yl90eXBlIjoidXNlciIsInNjb3BlIjoidXJuOm9wYzpyZXNvdXJjZTpjb25zdW1lcjo6YWxsIiwiY2xpZW50X3RlbmFudG5hbWUiOiJpZGNzLTI4ZjdhYTE2MThkMDRmN2FiNzJlNzA4YWFmOTc1YTdiIiwicmVnaW9uX25hbWUiOiJzYS1zYW9wYXVsby1pZGNzLTEiLCJ1c2VyX2xhbmciOiJlbiIsImV4cCI6MTYzMDk3NzU1MywiaWF0IjoxNjMwOTc3NDUzLCJjbGllbnRfZ3VpZCI6IjM0OWU2MDI0MmRjMTRmNmY5OGVhMDJmZTZkNmI0YWQ4IiwiY2xpZW50X25hbWUiOiJPYWNQdWJsaWMiLCJ0ZW5hbnQiOiJpZGNzLTI4ZjdhYTE2MThkMDRmN2FiNzJlNzA4YWFmOTc1YTdiIiwianRpIjoiMTFlYzBmNzk2MTNlNjExNmE4YTI2Zjc5NjlkYjM5ZWUiLCJndHAiOiJybyIsInVzZXJfZGlzcGxheW5hbWUiOiJQYWJsbyBTaWVycmEiLCJzdWJfbWFwcGluZ2F0dHIiOiJ1c2VyTmFtZSIsInByaW1UZW5hbnQiOnRydWUsInRva190eXBlIjoiQVQiLCJjYV9ndWlkIjoiY2FjY3QtYTM4NDhmY2Q1NjYyNGE1ZTg3N2NmOTE0NDE4MmY4MTQiLCJhdWQiOlsiaHR0cHM6XC9cL3czMmp0bHp0bDN3Z2ZmcmdhaGZjeDI2Z3FhMjdkZ3VhLmFuYWx5dGljcy5vY3Aub3JhY2xlY2xvdWQuY29tIiwiaHR0cHM6XC9cL29hYy1ncmdxdm9haHNjdmstZ3IuYW5hbHl0aWNzLm9jcC5vcmFjbGVjbG91ZC5jb20iXSwidXNlcl9pZCI6ImJmYTBmYTMyZGVlNDQ4ZDBiNjNhOWNlODUyYTZkMmQ1IiwidGVuYW50X2lzcyI6Imh0dHBzOlwvXC9pZGNzLTI4ZjdhYTE2MThkMDRmN2FiNzJlNzA4YWFmOTc1YTdiLmlkZW50aXR5Lm9yYWNsZWNsb3VkLmNvbTo0NDMiLCJyZXNvdXJjZV9hcHBfaWQiOiJmMDc4M2EwYjMzYWY0OWQyYjYwNGJmN2UwZGRjYzFiOCJ9.PWjt4VnbO5GBJ4PEOjJNxp7UBBstjgEmdNHq_BS_qHV8dKnqb7_HngRVBTtSECPcYw5kIQOtRooURO3CtRTEohUU36zp7AXuz_FN9vrZRDVUsvmlOXeI2Hz8IXnSeEqnIe_gwPgmTs1pNg4V92lFhZgZZ0N6dX8UG8CpM5l119stvYS2Tm8ckaM9CPF18dOMVIqMvT0gaTLycOdWiHcZIiAOL8CHjGZYTuHiaKZ9otmXj9p23_YT8H2AuxvSBwE6XE_DvBX2oAwRqkXyNK5i6UbaGVYK8DFWryFqprruyVsfY36RCZX-qna3iCW6ED5sIAm_2mD1XO8NiPPohLzdig","token_type":"Bearer","expires_in":100}
+```
 
 ## 4. Oracle Function para crear un Token
 
