@@ -134,6 +134,36 @@ Al presionar debes ver en la consola un token que expira en 100s:
 {"access_token":"eyJ4NXQjUzI1NiI6ImNmRTg0NUdHeVZZOHMzbTNGZEY1Q3ozNXg0cTFhbDNnbi1TN2psZ05oWTgiLCJ4NXQiOiJFSW43eEFEaTcySGpfQVhCa0FrMldTeXlrSTgiLCJraWQiOiJTSUdOSU5HX0tFWSIsImFsZyI6IlJTMjU2In0.eyJ1c2VyX3R6IjoiQW1lcmljYVwvQ2hpY2FnbyIsInN1YiI6Im9hYyIsInVzZXJfbG9jYWxlIjoiZW4iLCJ1c2VyLnRlbmFudC5uYW1lIjoiaWRjcy0yOGY3YWExNjE4ZDA0ZjdhYjcyZTcwOGFhZjk3NWE3YiIsImlzcyI6Imh0dHBzOlwvXC9pZGVudGl0eS5vcmFjbGVjbG91ZC5jb21cLyIsInVzZXJfdGVuYW50bmFtZSI6ImlkY3MtMjhmN2FhMTYxOGQwNGY3YWI3MmU3MDhhYWY5NzVhN2IiLCJjbGllbnRfaWQiOiIzYmU2YjA0ODkzZGQ0MzkzYmJlZDljNzJlZjdmODg5NSIsInN1Yl90eXBlIjoidXNlciIsInNjb3BlIjoidXJuOm9wYzpyZXNvdXJjZTpjb25zdW1lcjo6YWxsIiwiY2xpZW50X3RlbmFudG5hbWUiOiJpZGNzLTI4ZjdhYTE2MThkMDRmN2FiNzJlNzA4YWFmOTc1YTdiIiwicmVnaW9uX25hbWUiOiJzYS1zYW9wYXVsby1pZGNzLTEiLCJ1c2VyX2xhbmciOiJlbiIsImV4cCI6MTYzMDk3NzU1MywiaWF0IjoxNjMwOTc3NDUzLCJjbGllbnRfZ3VpZCI6IjM0OWU2MDI0MmRjMTRmNmY5OGVhMDJmZTZkNmI0YWQ4IiwiY2xpZW50X25hbWUiOiJPYWNQdWJsaWMiLCJ0ZW5hbnQiOiJpZGNzLTI4ZjdhYTE2MThkMDRmN2FiNzJlNzA4YWFmOTc1YTdiIiwianRpIjoiMTFlYzBmNzk2MTNlNjExNmE4YTI2Zjc5NjlkYjM5ZWUiLCJndHAiOiJybyIsInVzZXJfZGlzcGxheW5hbWUiOiJQYWJsbyBTaWVycmEiLCJzdWJfbWFwcGluZ2F0dHIiOiJ1c2VyTmFtZSIsInByaW1UZW5hbnQiOnRydWUsInRva190eXBlIjoiQVQiLCJjYV9ndWlkIjoiY2FjY3QtYTM4NDhmY2Q1NjYyNGE1ZTg3N2NmOTE0NDE4MmY4MTQiLCJhdWQiOlsiaHR0cHM6XC9cL3czMmp0bHp0bDN3Z2ZmcmdhaGZjeDI2Z3FhMjdkZ3VhLmFuYWx5dGljcy5vY3Aub3JhY2xlY2xvdWQuY29tIiwiaHR0cHM6XC9cL29hYy1ncmdxdm9haHNjdmstZ3IuYW5hbHl0aWNzLm9jcC5vcmFjbGVjbG91ZC5jb20iXSwidXNlcl9pZCI6ImJmYTBmYTMyZGVlNDQ4ZDBiNjNhOWNlODUyYTZkMmQ1IiwidGVuYW50X2lzcyI6Imh0dHBzOlwvXC9pZGNzLTI4ZjdhYTE2MThkMDRmN2FiNzJlNzA4YWFmOTc1YTdiLmlkZW50aXR5Lm9yYWNsZWNsb3VkLmNvbTo0NDMiLCJyZXNvdXJjZV9hcHBfaWQiOiJmMDc4M2EwYjMzYWY0OWQyYjYwNGJmN2UwZGRjYzFiOCJ9.PWjt4VnbO5GBJ4PEOjJNxp7UBBstjgEmdNHq_BS_qHV8dKnqb7_HngRVBTtSECPcYw5kIQOtRooURO3CtRTEohUU36zp7AXuz_FN9vrZRDVUsvmlOXeI2Hz8IXnSeEqnIe_gwPgmTs1pNg4V92lFhZgZZ0N6dX8UG8CpM5l119stvYS2Tm8ckaM9CPF18dOMVIqMvT0gaTLycOdWiHcZIiAOL8CHjGZYTuHiaKZ9otmXj9p23_YT8H2AuxvSBwE6XE_DvBX2oAwRqkXyNK5i6UbaGVYK8DFWryFqprruyVsfY36RCZX-qna3iCW6ED5sIAm_2mD1XO8NiPPohLzdig","token_type":"Bearer","expires_in":100}
 ```
 
+En este momento podemos volver a nuestro código html y editarlo para que utilize el token que estamos generando para ver los dashboards sin necesidad de autentificación.
+
+**nota:** el usuario llamado `oac` debe tener permisos suficientes en `OAC` para ver el proyecto, entonces, puedes otorgarle en `OAC` permisos de visualizador y el proyecto debe estar en carpetas compartidas.
+
+```html
+<!DOCTYPE html>
+<html dir="ltr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Oracle Analytics Cloud</title>
+    </head>
+    <body>
+        <h1>Oracle Analytics Cloud</h1>
+        <div style="position: absolute; width: 100%; height: 100%">
+            <!-- dashboards -->
+            <oracle-dv project-path="/@Catalog/shared/Sample/Sample Project"></oracle-dv>
+        </div>
+    </body>
+    <script src="https://oac-grgqvoahscvk-gr.analytics.ocp.oraclecloud.com/public/dv/v1/embedding/standalone/embedding.js" type="application/javascript"></script>
+    <script>
+        const token = '<token>';
+        const params = ['knockout', 'ojs/ojcore', 'ojs/ojknockout', 'ojs/ojcomposite', 'jet-composites/oracle-dv/loader'];
+        requirejs(params, ($, ko, application) => {
+            application.setSecurityConfig('token', {tokenAuthFunction:()=> token});
+            ko.applyBindings();
+        });
+    </script>
+</html>
+```
+
 ## 4. Oracle Function para crear un Token
 
 ## 5. Crear un Api gateway para invocar nuestra Funcion
