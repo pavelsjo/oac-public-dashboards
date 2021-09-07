@@ -27,8 +27,8 @@ const createToken = async () => {
 
     formBody = formBody.join("&");
     console.log(formBody);
-    const response = await fetch(url, { method: "POST", headers: headers, body: formBody});
-    const data = response.json();
+    //const response = await fetch(url, { method: "POST", headers: headers, body: formBody});
+    //const data = response.json();
 
     return data;
 };
