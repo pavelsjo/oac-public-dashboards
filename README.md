@@ -14,7 +14,7 @@ Esta parte la dividiremos en 3 bloques:
 
 ![img](arquitectura-private.png)
 
-## [Parte II - Dashboard Público]('')
+## [Parte II - Dashboard Público]('parte-ii/README.md')
 
 Luego, agregaremos los componentes en `Oracle Cloud Infrastructure (OCI)` para hacer nuestros dashboards públicos. [Ver código]('')
 
