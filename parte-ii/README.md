@@ -165,9 +165,3 @@ En este momento podemos volver a nuestro código html y editarlo para que utiliz
 Del código anterior deberas cambiar el valor de `<token>` por el valor del `access_token` que te devolvió la consola en el paso anterior y tendrás hasta 100 segundos para probarlo y pasado ese tiempo debes nuevamente volver a generarlo desde la consola.
 
 **nota:**  `el usuario llamado oac` debe tener permisos suficientes en `OAC` para ver el proyecto, entonces, puedes otorgarle en `OAC` permisos de visualizador y el proyecto debe estar en carpetas compartidas.
-
-## 4. Oracle Function para crear un Token
-
-## 5. Crear un Api gateway para invocar nuestra Funcion
-
-## 6. Setup final de la página web
