@@ -154,4 +154,79 @@ Y si vuelves a invocar a la función `fn invoke apptoken oacfunction` recibirás
 
 ## 2. Crear un Api gateway para invocar nuestra Funcion
 
+El siguiente paso sera crear un `END POINT` al cual llamaremos para llamar a nuestra función, para ello crearemos un `API GATEWAY`:
+
+![img](media/api-1.png)
+
+Allí haremos click en `GATEWAY`, escribiremos un nombre `functionsgateway` también seleccionaremos que sea de tipo `Public` y la crearemos en la `Subnet Pública` y le damos crear.
+
+Tardará unos minutos en crearse y cuanto termine iremos a `Deployments`.
+
+![img](media/api-2.png)
+
+En la configuración básica debemos definir un nombre y una ruta básica para nuestrod esarrollo y es importante agregar los dominios seguros en CORS:
+
+![img](media/api-3.png)
+
+Luego en Routes, creamos el END POINT para llamar a nuestra función:
+
+![img](media/api-4.png)
+
+Para que nuestro gateway funcione correctamente:
+
+Es importante que en la editemos las reglas de seguridad de la VCN, permitiendo el ingreso de 443 con port all.
+
+Y también que, agregemos una nueva policy cambiando el nombre del `compartment` y el `compartmentid`:
+
+```sh
+#policy
+ALLOW any-user to use functions-family in compartment analytics where ALL {request.principal.type = 'ApiGateway', request.resource.compartment.id = 'ocid1.compartment.oc1..aaaaaaaa5jp2kvzdfbwlo3uftoxmsfubugvdfdfzf3tn4tsolk667sy57lqq'}
+```
+
+En este momento puedes usar el endpoint `https://lbx2s2aocvq72h5ztcog6bjhhe.apigateway.sa-saopaulo-1.oci.customer-oci.com/token` desde el navegador y obtendras el token.
+
 ## 3. Setup final de la página web
+
+Finalmente hacemos un setup de neustra página:
+
+```html
+<!DOCTYPE html>
+<html dir="ltr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Oracle Analytics Cloud</title>
+    </head>
+    <body>
+        <h1>Oracle Analytics Cloud</h1>
+        <div style="position: absolute; width: 100%; height: 100%">
+            <!-- dashboards -->
+            <oracle-dv project-path="/@Catalog/shared/Sample/Sample Project"></oracle-dv>
+        </div>
+    </body>
+    <script src="https://oac-grgqvoahscvk-gr.analytics.ocp.oraclecloud.com/public/dv/v1/embedding/standalone/embedding.js" type="application/javascript"></script>
+    <script>
+        var Url = 'https://lbx2s2aocvq72h5ztcog6bjhhe.apigateway.sa-saopaulo-1.oci.customer-oci.com/token';
+        var token_request = new XMLHttpRequest();
+        token_request.open("GET", Url, false);
+        token_request.send(null);
+        {
+            if (token_request.status = 200) {
+                var idcs_token = JSON.parse(token_request.response).access_token; 
+                requirejs(['jquery', 'knockout', 'obitech-application/application', 'ojs/ojcore', 'ojs/ojknockout', 'ojs/ojcomposite', 'jet-composites/oracle-dv/loader'],
+                    function ($, ko, application) {
+                        application.setSecurityConfig("token", {
+                            tokenAuthFunction:
+                                function () {
+                                    return idcs_token;
+                                }
+                        });
+                        ko.applyBindings();
+                    }
+                );
+            } else {
+                console.log(`error ${token_request.status} ${token_request.statusText}`)
+            }
+        }
+    </script>
+</html>
+```

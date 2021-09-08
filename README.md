@@ -1,6 +1,6 @@
 # Oracle Analytics Cloud, Dashboards Públicos.  - Tutorial
 
-En este tutorial embeberemos una instancia de `Oracle Analytics Cloud (OAC)` en una página web para acceder desde cualquier navegador y ver los dashboards públicos. El tutorial estará dividido en dos partes:
+En este tutorial embeberemos una instancia de `Oracle Analytics Cloud (OAC)` en una página web para acceder desde cualquier navegador y ver los dashboards públicos. El tutorial estará dividido en tres partes:
 
 ## [Parte I - Dashboard Privado](parte-i/README.md)
 
@@ -14,25 +14,28 @@ Esta parte la dividiremos en 3 bloques:
 
 ![img](arquitectura-private.png)
 
-## [Parte II - Dashboard Público](parte-ii/README.md)
+## [Parte II - Generación de un Token](parte-ii/README.md)
 
-Luego, agregaremos los componentes en `Oracle Cloud Infrastructure (OCI)` para hacer nuestros dashboards públicos. [Ver código]('')
-
-Para hacerlo dividiremos esta segunda parte en 6 bloques:
+Para hacerlo dividiremos esta segunda parte en 3 bloques:
 
 1. Crear un usuario con pocos privilegios
 2. Crear una app con IDCS.
 3. Codificar la credencial de nuestra app con Base 64.
-4. Oracle Function para crear un Token.
-5. Crear un Api gateway para invocar nuestra Funcion.
-6. Setup final de la página web.
+
+## [Parte III - Dashboard Público](parte-iii/README.md)
+
+Luego, agregaremos los componentes en `Oracle Cloud Infrastructure (OCI)` para hacer nuestros dashboards públicos. [Ver código]('')
+
+1. Oracle Function para crear un Token.
+2. Crear un Api gateway para invocar nuestra Funcion.
+3. Setup final de la página web.
 
 ![img](arquitectura-public.png)
 
 ## Contribuidores
 
-Elaboración: Pablo Sierra
-Revisado: Jose Ordoñez
+- Elaboración: Pablo Sierra
+- Revisado: Jose Ordoñez
 
 ## Referencias
 
