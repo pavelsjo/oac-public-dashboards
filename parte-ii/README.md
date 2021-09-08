@@ -31,7 +31,7 @@ Como puedes ver el usuario que estamos creando es federado, es decir, es un usua
 
 En mi caso el usuario se llama `oac` y para definir la contraseña debes revisar un nuevo mensaje que te habrá llegado al correo que escogiste.
 
-## 2. Crear una app con IDCS.
+## 2. Crear una app con IDCS
 
 El siguiente paso será crear una aplicacion para utilizarla como un mecanismo que nos permita la opción de autentificación vía token.
 

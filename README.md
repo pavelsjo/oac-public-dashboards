@@ -29,6 +29,11 @@ Para hacerlo dividiremos esta segunda parte en 6 bloques:
 
 ![img](arquitectura-public.png)
 
+## Contribuidores
+
+Elaboración: Pablo Sierra
+Revisado: Jose Ordoñez
+
 ## Referencias
 
 - [Oracle Analytics Cloud (OAC) Embedding— Public User Access — Part 1](https://insight2action.medium.com/oracle-analytics-cloud-oac-embedding-public-user-access-part-1-5fb0f513508a)
