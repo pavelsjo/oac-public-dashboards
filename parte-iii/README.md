@@ -174,7 +174,13 @@ Luego en Routes, creamos el END POINT para llamar a nuestra función:
 
 Para que nuestro gateway funcione correctamente:
 
-Es importante que en la editemos las reglas de seguridad de la VCN, permitiendo el ingreso de 443 con port all.
+Es importante editemos las reglas de seguridad de la VCN, en la Ingress RULES:
+
+- Stateless: No
+- Source: 0.0.0.0
+- IP Protocol: TCP
+- Source Port Range: All
+- Destination Port Range: 443
 
 Y también que, agregemos una nueva policy cambiando el nombre del `compartment` y el `compartmentid`:
 
