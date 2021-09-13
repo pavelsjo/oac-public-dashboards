@@ -265,26 +265,16 @@ Finalmente hacemos un [setup final](final/index.html) de nuestra página:
     </body>
     <script src="https://oac-grgqvoahscvk-gr.analytics.ocp.oraclecloud.com/public/dv/v1/embedding/standalone/embedding.js" type="application/javascript"></script>
     <script>
-        var Url = 'https://knooaaqzrwsvychkedrgdlkjzy.apigateway.sa-saopaulo-1.oci.customer-oci.com/v1/token';
-        var token_request = new XMLHttpRequest();
-        token_request.open("GET", Url, false);
-        token_request.send(null);
-        if (token_request.status === 200) {
-            var idcs_token = JSON.parse(token_request.response).access_token; 
-            requirejs(['jquery', 'knockout', 'obitech-application/application', 'ojs/ojcore', 'ojs/ojknockout', 'ojs/ojcomposite', 'jet-composites/oracle-dv/loader'],
-                function ($, ko, application) {
-                    application.setSecurityConfig("token", {
-                        tokenAuthFunction:
-                            function () {
-                                return idcs_token;
-                            }
-                    });
-                    ko.applyBindings();
-                }
-            );
-        } else {
-            console.log(`error ${token_request.status} ${token_request.statusText}`)
-        };
+        const URI = 'https://knooaaqzrwsvychkedrgdlkjzy.apigateway.sa-saopaulo-1.oci.customer-oci.com/v1/token';
+        fetch(URI)
+          .then(response => response.json())
+          .then( token => {
+              const params = ['jquery', 'knockout', 'obitech-application/application', 'ojs/ojcore', 'ojs/ojknockout', 'ojs/ojcomposite', 'jet-composites/oracle-dv/loader'];
+              requirejs(params, ($, ko, application) => {
+                  application.setSecurityConfig('token', {tokenAuthFunction: () => token.access_token });
+                  ko.applyBindings();
+              });
+          }).catch(error => console.log(error));
     </script>
 </html>
 ```
