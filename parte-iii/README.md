@@ -216,7 +216,7 @@ Tardará unos minutos en crearse y cuanto termine iremos a `Deployments`.
 
 ![img](media/api-2.png)
 
-En la configuración básica debemos definir un nombre `oac_gateway` y una ruta básica `/V1`para nuestro desarrollo y es importante agregar como dominio seguro `http://127.0.0.1:550` en CORS con el metodo `GET`:
+En la configuración básica debemos definir un nombre `oac_gateway` y una ruta básica `/V1`para nuestro desarrollo y es importante agregar como dominio seguro `http://127.0.0.1:5500` en CORS con el metodo `GET`:
 
 ![img](media/api-3.png)
 
