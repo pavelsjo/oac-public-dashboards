@@ -32,6 +32,15 @@ Luego, agregaremos los componentes en `Oracle Cloud Infrastructure (OCI)` para h
 
 ![img](arquitectura-public.png)
 
+## [Parte IV - Tópicos](parte-iv/README.md)
+
+El token por defecto tiene una duración de 100 segundos, por lo que, en orden de extender el tiempo podemos tomar alguna de las siguientes acciones:
+
+    - Aumentar el límite de expiración del token desde el Oracle Identity Cloud Service (OIDC).
+    - Agregar a nuestro script en javascript un `setInterval(() => {}, 90000)` que refresque automáticamente cada 90 segundos.
+
+En este sentido, usaremos la opción de editar el script.
+
 ## Contribuidores
 
 - Elaboración: Pablo Sierra
